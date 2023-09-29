@@ -12,16 +12,20 @@ public class nodo_Estudiante {
     
     String id;
     String nombre;
-    enum sexo {MASCULINO,FEMENINO}
+    String sexo;
     int edad;
     Acudiente acudiente;
     nodo_Estudiante sig;
 
-    public nodo_Estudiante(String id, int edad, Acudiente acudiente) {
+    public nodo_Estudiante(String id, String nombre, String sexo, int edad, Acudiente acudiente) {
         this.id = id;
+        this.nombre = nombre;
+        this.sexo = sexo;
         this.edad = edad;
         this.acudiente = acudiente;
     }
+
+  
 
     public String getId() {
         return id;

@@ -12,4 +12,11 @@ public class Acudiente {
     
     String nombre;
     String telefono;
+
+    public Acudiente(String nombre, String telefono) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+    
+    
 }
