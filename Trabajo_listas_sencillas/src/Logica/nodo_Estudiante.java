@@ -3,10 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Logica;
-                  // zzz
+
+import javax.swing.JOptionPane;
+
+           
 /**
  *
- * @author USUARIO
+ * @author Leocarlos y moises
  */
 public class nodo_Estudiante {
     
@@ -24,9 +27,8 @@ public class nodo_Estudiante {
         this.edad = edad;
         this.acudiente = acudiente;
     }
-
-  
-
+    
+    
     public String getId() {
         return id;
     }
@@ -51,5 +53,14 @@ public class nodo_Estudiante {
         this.acudiente = acudiente;
     }
     
-    
+    public void mostrar(){
+        
+        String info = "id: " + id
+                + "\n nombre: " + nombre
+                + "\n sexo: " + sexo
+                + "\n edad: " + edad
+                + "\n acudiente: " + acudiente;;
+                
+        JOptionPane.showMessageDialog(null, info);
+    }  
 }

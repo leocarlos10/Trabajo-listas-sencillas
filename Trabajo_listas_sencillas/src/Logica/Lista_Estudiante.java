@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author USUARIO
+ * @author Leocarlos y moises
  */
 public class Lista_Estudiante {
     
@@ -86,6 +86,33 @@ public class Lista_Estudiante {
         }
        return p;
     }
+   
+    public void setAddInicio(
+            JTextField id,
+            JTextField nombre,
+            String sexo,
+            JTextField edad,
+            JTextField nombre_acudiente,
+            JTextField t_acudiente 
+        ){
+        
+        nodo_Estudiante info= getCrearnod(id, nombre, sexo, edad, nombre_acudiente, t_acudiente);
+        
+        if (info != null) {
+            if (cab == null) {
+                cab = info;
+                JOptionPane.showMessageDialog(null,
+                        "Estudiante agregado, Lista estaba vacia ");
+            } else {
+                
+                info.sig = cab;
+                cab = info;
+                JOptionPane.showMessageDialog(null,
+                        "Estudiante agregado al inicio de la lista.");
+            }
+        }
+    }
+    
     
     public void setAgregarfinal(
             JTextField id,
@@ -109,5 +136,61 @@ public class Lista_Estudiante {
                 JOptionPane.showMessageDialog(null, "Estudiante agregado");
             }
         }
+    }
+        
+    public nodo_Estudiante getAnterior(nodo_Estudiante actual) {
+
+        nodo_Estudiante anterior = null;
+        if (cab == null) {
+            return null;
+        } else {
+            anterior = cab;
+            while (anterior.sig != actual) {
+                anterior = anterior.sig;
+            }
+            return anterior;
+        }
+    }
+    
+    
+    public void setAgregar_centro(
+            JTextField id,
+            JTextField nombre,
+            String sexo,
+            JTextField edad,
+            JTextField nombre_acudiente,
+            JTextField t_acudiente,
+            String id_nodo_actual
+    ){
+      
+        nodo_Estudiante info = getCrearnod(id, nombre, sexo, edad, nombre_acudiente, t_acudiente);
+        
+        if(info!= null){
+            nodo_Estudiante pos;
+            nodo_Estudiante nodo_actual=getBuscarId(id_nodo_actual);
+            if(cab==null){
+                
+                cab=info;
+                JOptionPane.showMessageDialog(null, "Estudiante agregado, Lista estaba vacia");
+            }else{
+                // guardo el posterior al nodo actual
+                pos=nodo_actual.sig;
+                // hacemos que nodo actual apunte a info
+                nodo_actual.sig=info;
+                // ahora hacemos que info apunte a el nodo posterior
+                info.sig=pos;
+                JOptionPane.showMessageDialog(null, ""
+                        + "Estudiante se ha agregado en medio de "+nodo_actual.nombre+" y "+pos.nombre);
+            }
+        }
+    }
+    
+    public void getEstudiante(String id){
+        
+        nodo_Estudiante p = getBuscarId(id);
+        if(p!=null)
+        p.mostrar();
+        else
+            JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
     }
 }

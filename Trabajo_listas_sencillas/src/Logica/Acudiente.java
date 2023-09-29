@@ -6,7 +6,7 @@ package Logica;
 
 /**
  *
- * @author USUARIO
+ * @author 
  */
 public class Acudiente {
     
