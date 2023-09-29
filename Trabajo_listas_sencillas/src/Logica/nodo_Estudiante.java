@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
            
 /**
  *
- * @author Leocarlos y moises
+ * @author Leocarlos y moisesm
  */
 public class nodo_Estudiante {
     
