@@ -122,7 +122,7 @@ public class Jfrm extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addGap(96, 96, 96)
+                .addGap(60, 60, 60)
                 .addComponent(jLabel2)
                 .addGap(99, 99, 99))
         );
