@@ -277,6 +277,7 @@ public class Lista_Estudiante {
       
     }
     
+     
     
     public void setRegistrarFilaJTable(DefaultTableModel miModelo,
         int Fila, nodo_Estudiante info){
@@ -288,6 +289,46 @@ public class Lista_Estudiante {
         miModelo.setValueAt(info.acudiente.nombre, Fila, 5);
         miModelo.setValueAt(info.acudiente.telefono, Fila, 6);
     }
+    
+    public void gEstudiantesMayorEdad() {
+    int maxEdadPrimero = -1; int maxEdadQuinto = -1; 
+    
+    nodo_Estudiante estudianteMaxPrimero = null; nodo_Estudiante estudianteMaxQuinto = null;
+    
+    nodo_Estudiante actual = cab; 
+
+    while (actual != null) {
+        if (actual.getCurso() == 1 && actual.getEdad() > maxEdadPrimero) {
+            maxEdadPrimero = actual.getEdad();
+            estudianteMaxPrimero = actual;
+        } else if (actual.getCurso() == 5 && actual.getEdad() > maxEdadQuinto) {
+            maxEdadQuinto = actual.getEdad();
+            estudianteMaxQuinto = actual;
+        }
+        actual = actual.sig;
+    }
+
+    if (estudianteMaxPrimero != null) {
+        // Muestra el estudiante de mayor edad en el curso primero
+        JOptionPane.showMessageDialog(null, "Estudiante de mayor edad en primero:\n\n" +
+                "Nombre: " + estudianteMaxPrimero.getNombre() + "\n" +
+                "Sexo: " + estudianteMaxPrimero.getSexo() + "\n" +
+                "Edad: " + estudianteMaxPrimero.getEdad());
+    } else {
+        JOptionPane.showMessageDialog(null, "No se encontraron estudiantes en el curso primero.");
+    }
+
+    if (estudianteMaxQuinto != null) {
+        // Muestra el estudiante de mayor edad en el curso quinto
+        JOptionPane.showMessageDialog(null, "Estudiante de mayor edad en quinto:\n\n" +
+                "Nombre: " + estudianteMaxQuinto.getNombre() + "\n" +
+                "Sexo: " + estudianteMaxQuinto.getSexo() + "\n" +
+                "Edad: " + estudianteMaxQuinto.getEdad());
+    } else {
+        JOptionPane.showMessageDialog(null, "No se encontraron estudiantes en el curso quinto.");
+    }
+}
+
     
     public void setLlenarJTable(JTable tab){
         nodo_Estudiante p=cab;
@@ -308,4 +349,7 @@ public class Lista_Estudiante {
         }
         tab.setModel(miModelo);
     }
+    
+    
+    
 }

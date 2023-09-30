@@ -66,6 +66,16 @@ public class nodo_Estudiante {
         this.edad = edad;
     }
 
+    public int getCurso() {
+        return curso;
+    }
+
+    public void setCurso(int curso) {
+        this.curso = curso;
+    }
+
+    
+    
     public Acudiente getAcudiente() {
         return acudiente;
     }
