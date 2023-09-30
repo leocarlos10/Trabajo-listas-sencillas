@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Leocarlos y moises
+ * cambio
  */
 public class nodo_Estudiante {
     
