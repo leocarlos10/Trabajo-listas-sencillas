@@ -72,8 +72,8 @@ public class nodo_Estudiante {
     public void mostrar(){
         
         String info ="""
-                     Info del estudiante:
-                     id: """ + id
+                     Info del estudiante con id: """ + id +
+                "\n" 
                 + "\n nombre: " + nombre
                 + "\n sexo: " + sexo
                 + "\n edad: " + edad
