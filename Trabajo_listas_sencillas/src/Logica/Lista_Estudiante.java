@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import Logica.nodo_Estudiante;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -15,27 +16,29 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Lista_Estudiante {
     
-    nodo_Estudiante cab;
+    public nodo_Estudiante cab;
+    
     
     public Lista_Estudiante(){cab = null;}
-    
+
+    public void setCab(nodo_Estudiante cab) {
+        this.cab = cab;
+    }
     
     public nodo_Estudiante getBuscarId(String id){
+        
         nodo_Estudiante p;
         
-        if(cab == null){
+        if(cab==null){
             
             return null;
         }else{
-            
             p=cab;
-            while(cab!= null){
-                
-                if(cab.getId().equals(id)){
+            while(p!=null){
+                if(p.getId().equals(id))
                     return p;
-                }else{
+                else
                     p=p.sig;
-                }   
             }
             return null;
         }
@@ -49,35 +52,37 @@ public class Lista_Estudiante {
             JTextField edad,
             JTextField nombre_acudiente,
             JTextField t_acudiente
-            
-            
     ){
-        nodo_Estudiante buscar = getBuscarId(id.getText());
-        nodo_Estudiante info = null;
-        
-        if(buscar != null){
-            
-            JOptionPane.showMessageDialog(null, "ID repetido, Porfavor intente nuevamenete");
-            id.setText("");
-            id.requestFocus();
-        }else{
-            try{
-            info = new nodo_Estudiante(
-                    id.getText(),
-                    nombre.getText(),
-                    sexo.getText(),
-                    Integer.parseInt(edad.getText()),
-                    new Acudiente(nombre_acudiente.getText(),t_acudiente.getText()));
-            }catch(Exception e){
-               JOptionPane.showMessageDialog(null, "Error"+e);
-            }
+         nodo_Estudiante info = null;
+         
+        try{
+               nodo_Estudiante buscar = getBuscarId(id.getText());
+
+               if (buscar != null) {
+
+                   JOptionPane.showMessageDialog(null, "ID repetido, Porfavor intente nuevamenete");
+                   id.setText("");
+                   id.requestFocus();
+               } else {
+
+                   info = new nodo_Estudiante(
+                           id.getText(),
+                           nombre.getText(),
+                           sexo.getText(),
+                           Integer.parseInt(edad.getText()),
+                           new Acudiente(nombre_acudiente.getText(), t_acudiente.getText()));
+
+               }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al crear el nodo "+e);
         }
-        return info;
+         return info;
     }
     
    public nodo_Estudiante getUltimo(){
       
        nodo_Estudiante p; 
+       
        if(cab==null)
             return null;
         else{
@@ -105,12 +110,26 @@ public class Lista_Estudiante {
                 cab = info;
                 JOptionPane.showMessageDialog(null,
                         "Estudiante agregado, Lista estaba vacia ");
+                id.setText("");
+                    nombre.setText("");
+                    sexo.setText("");
+                    edad.setText("");
+                    nombre_acudiente.setText("");
+                    t_acudiente.setText("");
+                    id.requestFocus();
             } else {
                 
                 info.sig = cab;
                 cab = info;
                 JOptionPane.showMessageDialog(null,
                         "Estudiante agregado al inicio de la lista.");
+                id.setText("");
+                    nombre.setText("");
+                    sexo.setText("");
+                    edad.setText("");
+                    nombre_acudiente.setText("");
+                    t_acudiente.setText("");
+                    id.requestFocus();
             }
         }
     }
@@ -124,20 +143,33 @@ public class Lista_Estudiante {
             JTextField nombre_acudiente,
             JTextField t_acudiente
     ){
-        
-        nodo_Estudiante info = getCrearnod(id, nombre, sexo, edad, nombre_acudiente, t_acudiente);
-        
-        if(info!= null){
-            
-            if(cab==null){
-                cab=info;
-                JOptionPane.showMessageDialog(null, "Estudiante agregado, Lista estaba vacia");
-            }else{
-                nodo_Estudiante ultimo = getUltimo();
-                ultimo.sig=info;
-                JOptionPane.showMessageDialog(null, "Estudiante agregado");
+            nodo_Estudiante info = getCrearnod(id, nombre, sexo, edad, nombre_acudiente, t_acudiente);
+
+            if (info != null) {
+
+                if (cab == null) {
+                    cab = info;
+                    JOptionPane.showMessageDialog(null, "Estudiante agregado, Lista estaba vacia");
+                    id.setText("");
+                    nombre.setText("");
+                    sexo.setText("");
+                    edad.setText("");
+                    nombre_acudiente.setText("");
+                    t_acudiente.setText("");
+                    id.requestFocus();
+                } else {
+                    nodo_Estudiante ultimo = getUltimo();
+                    ultimo.sig = info;
+                    JOptionPane.showMessageDialog(null, "Estudiante agregado");
+                    id.setText("");
+                    nombre.setText("");
+                    sexo.setText("");
+                    edad.setText("");
+                    nombre_acudiente.setText("");
+                    t_acudiente.setText("");
+                    id.requestFocus();
+                }
             }
-        }
     }
         
     public nodo_Estudiante getAnterior(nodo_Estudiante actual) {
@@ -174,6 +206,13 @@ public class Lista_Estudiante {
                 
                 cab=info;
                 JOptionPane.showMessageDialog(null, "Estudiante agregado, Lista estaba vacia");
+                id.setText("");
+                    nombre.setText("");
+                    sexo.setText("");
+                    edad.setText("");
+                    nombre_acudiente.setText("");
+                    t_acudiente.setText("");
+                    id.requestFocus();
             }else{
                 // guardo el posterior al nodo actual
                 pos=nodo_actual.sig;
@@ -183,18 +222,27 @@ public class Lista_Estudiante {
                 info.sig=pos;
                 JOptionPane.showMessageDialog(null, ""
                         + "Estudiante se ha agregado en medio de "+nodo_actual.nombre+" y "+pos.nombre);
+                id.setText("");
+                    nombre.setText("");
+                    sexo.setText("");
+                    edad.setText("");
+                    nombre_acudiente.setText("");
+                    t_acudiente.setText("");
+                    id.requestFocus();
             }
         }
     }
     
     public void getEstudiante(String id){
-        
-        nodo_Estudiante p = getBuscarId(id);
-        if(p!=null)
-        p.mostrar();
-        else
-            JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
+         
+       nodo_Estudiante p = getBuscarId(id);
+       if(p!=null)
+           p.mostrar();
+       else
+           JOptionPane.showMessageDialog(null, "El estudiante no ha sido encontrado");
     }
+    
+    
     public void setRegistrarFilaJTable(DefaultTableModel miModelo,
         int Fila, nodo_Estudiante info){
         miModelo.setValueAt(info.id, Fila, 0);

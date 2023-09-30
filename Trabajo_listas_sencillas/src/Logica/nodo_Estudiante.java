@@ -71,11 +71,14 @@ public class nodo_Estudiante {
     
     public void mostrar(){
         
-        String info = "id: " + id
+        String info ="""
+                     Info del estudiante:
+                     id: """ + id
                 + "\n nombre: " + nombre
                 + "\n sexo: " + sexo
                 + "\n edad: " + edad
-                + "\n acudiente: " + acudiente;;
+                + "\n nombre del acudiente: " + acudiente.nombre
+                + "\n telefono del acudiente: "+acudiente.telefono;
                 
         JOptionPane.showMessageDialog(null, info);
     }  
