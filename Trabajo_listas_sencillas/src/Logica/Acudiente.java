@@ -4,6 +4,8 @@
  */
 package Logica;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 
@@ -34,5 +36,13 @@ public class Acudiente {
         this.telefono = telefono;
     }
     
-    
+    public void mostrar(){
+        
+        String info = """
+                      Informacion del acudiente 
+                      Nombre del acudiente: """+nombre
+                +"\nTelefono del acudiente: "+telefono;
+        
+        JOptionPane.showMessageDialog(null, info);
+    }
 }

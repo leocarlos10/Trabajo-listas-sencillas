@@ -225,16 +225,16 @@ public class Jfrmdatos extends javax.swing.JFrame {
         
         switch(opcion.getSelectedIndex()){
             case 0:
-                listaEstudiantes.setAddInicio(id, nombre, sexo, edad, nombre, tac);
+                listaEstudiantes.setAddInicio(id, nombre, sexo, edad, noa, tac);
                 listaEstudiantes.setLlenarJTable(principal.tab);
                 break;
             case 1:
                 String id_n = JOptionPane.showInputDialog("Ingrese el id del nodo actual");
-                listaEstudiantes.setAgregar_centro(id, nombre, sexo, edad, nombre, tac, id_n);
+                listaEstudiantes.setAgregar_centro(id, nombre, sexo, edad, noa, tac, id_n);
                 listaEstudiantes.setLlenarJTable(principal.tab);
                 break;
             case 2:
-                listaEstudiantes.setAgregarfinal(id, nombre, sexo, edad, nombre, tac);
+                listaEstudiantes.setAgregarfinal(id, nombre, sexo, edad, noa, tac);
                 listaEstudiantes.setLlenarJTable(principal.tab);
         }
        

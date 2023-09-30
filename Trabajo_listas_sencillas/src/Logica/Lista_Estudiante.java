@@ -44,6 +44,25 @@ public class Lista_Estudiante {
         }
     }
     
+     public nodo_Estudiante getBuscarNombre(String nombre){
+        
+        nodo_Estudiante p;
+        
+        if(cab==null){
+            
+            return null;
+        }else{
+            p=cab;
+            while(p!=null){
+                if(p.getNombre().equalsIgnoreCase(nombre))
+                    return p;
+                else
+                    p=p.sig;
+            }
+            return null;
+        }
+    }
+    
    
     public nodo_Estudiante getCrearnod(
             JTextField id,
@@ -240,6 +259,16 @@ public class Lista_Estudiante {
            p.mostrar();
        else
            JOptionPane.showMessageDialog(null, "El estudiante no ha sido encontrado");
+    }
+    
+     public void getBuscarInfo_Acudiente(String nombre){
+        
+         nodo_Estudiante p = getBuscarNombre(nombre);
+         if(p!=null)
+             p.acudiente.mostrar();
+         else
+           JOptionPane.showMessageDialog(null, "Informacion del acudiente no encontrada");  
+      
     }
     
     
