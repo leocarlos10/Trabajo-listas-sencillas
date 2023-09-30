@@ -47,8 +47,10 @@ public class Jfrm extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -84,7 +86,7 @@ public class Jfrm extends javax.swing.JFrame {
 
         agregarEstudiante.setText("Opciones");
 
-        jMenuItem1.setText("Agregar Estudiante(final de la lista)");
+        jMenuItem1.setText("Agregar Estudiante");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -92,7 +94,7 @@ public class Jfrm extends javax.swing.JFrame {
         });
         agregarEstudiante.add(jMenuItem1);
 
-        jMenuItem3.setText("info estudiante(id)");
+        jMenuItem3.setText("información de estudiante por ID");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -100,13 +102,21 @@ public class Jfrm extends javax.swing.JFrame {
         });
         agregarEstudiante.add(jMenuItem3);
 
-        jMenuItem4.setText("info acudiente(nombre estudiante)");
+        jMenuItem4.setText("Informacion de acudiente por nombre");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
             }
         });
         agregarEstudiante.add(jMenuItem4);
+
+        jMenuItem6.setText("Eliminar estudiante");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        agregarEstudiante.add(jMenuItem6);
 
         jMenuItem5.setText("Estudiantes de mayor edad");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -116,13 +126,21 @@ public class Jfrm extends javax.swing.JFrame {
         });
         agregarEstudiante.add(jMenuItem5);
 
-        jMenuItem6.setText("Eliminar estudiante");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem7.setText("Mujeres en quinto");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                jMenuItem7ActionPerformed(evt);
             }
         });
-        agregarEstudiante.add(jMenuItem6);
+        agregarEstudiante.add(jMenuItem7);
+
+        jMenuItem8.setText("Informe primer grado");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        agregarEstudiante.add(jMenuItem8);
 
         jMenuBar1.add(agregarEstudiante);
 
@@ -195,6 +213,14 @@ public class Jfrm extends javax.swing.JFrame {
       estudiante.setEliminar_estudiante(tab);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+       estudiante.gInfMujeresQuinto();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+      estudiante.informePrimerGrado();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +269,8 @@ public class Jfrm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tab;
     // End of variables declaration//GEN-END:variables
