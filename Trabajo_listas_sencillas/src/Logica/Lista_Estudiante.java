@@ -69,6 +69,7 @@ public class Lista_Estudiante {
             JTextField nombre,
             JTextField sexo,
             JTextField edad,
+            int curso,
             JTextField nombre_acudiente,
             JTextField t_acudiente
     ){
@@ -89,6 +90,7 @@ public class Lista_Estudiante {
                            nombre.getText(),
                            sexo.getText(),
                            Integer.parseInt(edad.getText()),
+                           curso,
                            new Acudiente(nombre_acudiente.getText(), t_acudiente.getText()));
 
                }
@@ -118,11 +120,12 @@ public class Lista_Estudiante {
             JTextField nombre,
             JTextField sexo,
             JTextField edad,
+            int curso,
             JTextField nombre_acudiente,
             JTextField t_acudiente 
         ){
         
-        nodo_Estudiante info= getCrearnod(id, nombre, sexo, edad, nombre_acudiente, t_acudiente);
+        nodo_Estudiante info= getCrearnod(id, nombre, sexo, edad,curso, nombre_acudiente, t_acudiente);
         
         if (info != null) {
             if (cab == null) {
@@ -159,10 +162,11 @@ public class Lista_Estudiante {
             JTextField nombre,
             JTextField sexo,
             JTextField edad,
+            int curso,
             JTextField nombre_acudiente,
             JTextField t_acudiente
     ){
-            nodo_Estudiante info = getCrearnod(id, nombre, sexo, edad, nombre_acudiente, t_acudiente);
+            nodo_Estudiante info = getCrearnod(id, nombre, sexo, edad,curso, nombre_acudiente, t_acudiente);
 
             if (info != null) {
 
@@ -211,12 +215,13 @@ public class Lista_Estudiante {
             JTextField nombre,
             JTextField sexo,
             JTextField edad,
+            int curso,
             JTextField nombre_acudiente,
             JTextField t_acudiente,
             String id_nodo_actual
     ){
       
-        nodo_Estudiante info = getCrearnod(id, nombre, sexo, edad, nombre_acudiente, t_acudiente);
+        nodo_Estudiante info = getCrearnod(id, nombre, sexo, edad,curso, nombre_acudiente, t_acudiente);
         
         if(info!= null){
             nodo_Estudiante pos;
@@ -279,8 +284,9 @@ public class Lista_Estudiante {
         miModelo.setValueAt(info.nombre, Fila, 1);
         miModelo.setValueAt(info.sexo, Fila, 2);
         miModelo.setValueAt(info.edad, Fila, 3);
-        miModelo.setValueAt(info.acudiente.nombre, Fila, 4);
-        miModelo.setValueAt(info.acudiente.telefono, Fila, 5);
+        miModelo.setValueAt(info.curso, Fila, 4);
+        miModelo.setValueAt(info.acudiente.nombre, Fila, 5);
+        miModelo.setValueAt(info.acudiente.telefono, Fila, 6);
     }
     
     public void setLlenarJTable(JTable tab){
@@ -291,6 +297,7 @@ public class Lista_Estudiante {
         miModelo.addColumn("Nombre");
         miModelo.addColumn("Sexo");
         miModelo.addColumn("Edad");
+        miModelo.addColumn("curso");
         miModelo.addColumn("Nombre");
         miModelo.addColumn("Teléfono");
         while(p!=null){                        

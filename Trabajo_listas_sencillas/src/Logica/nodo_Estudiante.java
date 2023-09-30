@@ -18,16 +18,20 @@ public class nodo_Estudiante {
     String nombre;
     String sexo;
     int edad;
+    int curso;
     Acudiente acudiente;
     nodo_Estudiante sig;
 
-    public nodo_Estudiante(String id, String nombre, String sexo, int edad, Acudiente acudiente) {
+    public nodo_Estudiante(String id, String nombre, String sexo, int edad, int curso, Acudiente acudiente) {
         this.id = id;
         this.nombre = nombre;
         this.sexo = sexo;
         this.edad = edad;
+        this.curso = curso;
         this.acudiente = acudiente;
     }
+
+   
     
     
     public String getId() {

@@ -55,7 +55,7 @@ public class Jfrm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nombre", "Sexo ", "Edad", "Nombre", "Telefono"
+                "ID", "Nombre", "Sexo ", "Edad", "Curso", "Nombre", "Telefono"
             }
         ));
         jScrollPane1.setViewportView(tab);
