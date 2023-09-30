@@ -48,6 +48,7 @@ public class Jfrm extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -114,6 +115,14 @@ public class Jfrm extends javax.swing.JFrame {
             }
         });
         agregarEstudiante.add(jMenuItem5);
+
+        jMenuItem6.setText("Eliminar estudiante");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        agregarEstudiante.add(jMenuItem6);
 
         jMenuBar1.add(agregarEstudiante);
 
@@ -182,6 +191,10 @@ public class Jfrm extends javax.swing.JFrame {
         estudiante.gEstudiantesMayorEdad();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+      estudiante.setEliminar_estudiante(tab);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -229,6 +242,7 @@ public class Jfrm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tab;
     // End of variables declaration//GEN-END:variables

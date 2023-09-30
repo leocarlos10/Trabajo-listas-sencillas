@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import GUI.Jfrm;
 import Logica.nodo_Estudiante;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -272,13 +273,10 @@ public class Lista_Estudiante {
          if(p!=null)
              p.acudiente.mostrar();
          else
-           JOptionPane.showMessageDialog(null, "Informacion del acudiente no encontrada"); 
-        
-      
+           JOptionPane.showMessageDialog(null, "Informacion del acudiente no encontrada");
     }
-    
      
-    
+     
     public void setRegistrarFilaJTable(DefaultTableModel miModelo,
         int Fila, nodo_Estudiante info){
         miModelo.setValueAt(info.id, Fila, 0);
@@ -291,43 +289,120 @@ public class Lista_Estudiante {
     }
     
     public void gEstudiantesMayorEdad() {
-    int maxEdadPrimero = -1; int maxEdadQuinto = -1; 
-    
-    nodo_Estudiante estudianteMaxPrimero = null; nodo_Estudiante estudianteMaxQuinto = null;
-    
-    nodo_Estudiante actual = cab; 
+        int maxEdadPrimero = -1;
+        int maxEdadQuinto = -1;
 
-    while (actual != null) {
-        if (actual.getCurso() == 1 && actual.getEdad() > maxEdadPrimero) {
-            maxEdadPrimero = actual.getEdad();
-            estudianteMaxPrimero = actual;
-        } else if (actual.getCurso() == 5 && actual.getEdad() > maxEdadQuinto) {
-            maxEdadQuinto = actual.getEdad();
-            estudianteMaxQuinto = actual;
+        nodo_Estudiante estudianteMaxPrimero = null;
+        nodo_Estudiante estudianteMaxQuinto = null;
+
+        nodo_Estudiante actual = cab;
+
+        while (actual != null) {
+            if (actual.getCurso() == 1 && actual.getEdad() > maxEdadPrimero) {
+                maxEdadPrimero = actual.getEdad();
+                estudianteMaxPrimero = actual;
+            } else if (actual.getCurso() == 5 && actual.getEdad() > maxEdadQuinto) {
+                maxEdadQuinto = actual.getEdad();
+                estudianteMaxQuinto = actual;
+            }
+            actual = actual.sig;
         }
-        actual = actual.sig;
-    }
 
-    if (estudianteMaxPrimero != null) {
-        // Muestra el estudiante de mayor edad en el curso primero
-        JOptionPane.showMessageDialog(null, "Estudiante de mayor edad en primero:\n\n" +
-                "Nombre: " + estudianteMaxPrimero.getNombre() + "\n" +
-                "Sexo: " + estudianteMaxPrimero.getSexo() + "\n" +
-                "Edad: " + estudianteMaxPrimero.getEdad());
-    } else {
-        JOptionPane.showMessageDialog(null, "No se encontraron estudiantes en el curso primero.");
-    }
+        if (estudianteMaxPrimero != null) {
+            // Muestra el estudiante de mayor edad en el curso primero
+            JOptionPane.showMessageDialog(null, "Estudiante de mayor edad en primero:\n\n"
+                    + "Nombre: " + estudianteMaxPrimero.getNombre() + "\n"
+                    + "Sexo: " + estudianteMaxPrimero.getSexo() + "\n"
+                    + "Edad: " + estudianteMaxPrimero.getEdad());
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontraron estudiantes en el curso primero.");
+        }
 
-    if (estudianteMaxQuinto != null) {
-        // Muestra el estudiante de mayor edad en el curso quinto
-        JOptionPane.showMessageDialog(null, "Estudiante de mayor edad en quinto:\n\n" +
-                "Nombre: " + estudianteMaxQuinto.getNombre() + "\n" +
-                "Sexo: " + estudianteMaxQuinto.getSexo() + "\n" +
-                "Edad: " + estudianteMaxQuinto.getEdad());
-    } else {
-        JOptionPane.showMessageDialog(null, "No se encontraron estudiantes en el curso quinto.");
+        if (estudianteMaxQuinto != null) {
+            // Muestra el estudiante de mayor edad en el curso quinto
+            JOptionPane.showMessageDialog(null, "Estudiante de mayor edad en quinto:\n\n"
+                    + "Nombre: " + estudianteMaxQuinto.getNombre() + "\n"
+                    + "Sexo: " + estudianteMaxQuinto.getSexo() + "\n"
+                    + "Edad: " + estudianteMaxQuinto.getEdad());
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontraron estudiantes en el curso quinto.");
+        }
     }
-}
+    
+     public void setElimCodigo(String id){
+       
+         if(cab==null){
+            JOptionPane.showMessageDialog(null, 
+                "La lista no tiene elementos!");
+        }else{
+            nodo_Estudiante p, anterior=null;            
+            p=getBuscarId(id);
+            if(p==null)
+               JOptionPane.showMessageDialog(null, 
+                "El código buscado para eliminar NO"
+                + " se encuentra registrado!");
+            else{
+                if((p==cab)&&(cab.sig==null)){
+                    cab=null;
+                    JOptionPane.showMessageDialog(null, 
+                    "Elemento eliminado, la lista esta vacía!");
+                }
+                else if((p==cab)&&(cab.sig!=null)){
+                    cab=cab.sig;
+                    p.sig=null;
+                    p=null;
+                    JOptionPane.showMessageDialog(null, 
+                    "Elemento eliminado, en el inicio de la"
+                    + " lista!");
+                }
+                else if(p.sig==null){
+                    anterior=getAnterior(p);
+                    anterior.sig=null;
+                    p=null;
+                    JOptionPane.showMessageDialog(null, 
+                    "Elemento eliminado, al final de la"
+                    + " lista!");
+                }else{                    
+                    anterior=getAnterior(p);
+                    anterior.sig=p.sig;
+                    p.sig=null;
+                    p=null;
+                    JOptionPane.showMessageDialog(null, 
+                    "Elemento eliminado!");
+                }
+            }
+        }
+    }
+     
+     public void setEliminar_estudiante(JTable tab){
+         
+           String id = JOptionPane.showInputDialog("Ingrese el id del estudiante a eliminar");
+           nodo_Estudiante p= getBuscarId(id);
+         
+         if(p.curso == 5){
+             String estado_curso = JOptionPane.showInputDialog("""
+                                                               El estudiante termino el grado 5 ?
+                                                               Escriba si
+                                                               o no.
+                                                               """);
+             
+             if(estado_curso.equalsIgnoreCase("si")){
+                 setElimCodigo(id);
+                 setLlenarJTable(tab);
+             }else{
+                 JOptionPane.showMessageDialog(null, """
+                                                     Para poder eliminar al estudiante, antes debe
+                                                     terminar el grado 5
+                                                     """);
+             }
+         }else{
+             
+             JOptionPane.showMessageDialog(null, """
+                                                 El estudiante no se encuentra en el grado 5
+                                                 Por tanto no se puede eliminar
+                                                 """);
+         }
+     }
 
     
     public void setLlenarJTable(JTable tab){
@@ -348,8 +423,5 @@ public class Lista_Estudiante {
             i++;
         }
         tab.setModel(miModelo);
-    }
-    
-    
-    
+    } 
 }
