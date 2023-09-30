@@ -5,7 +5,9 @@
 package Logica;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -43,7 +45,7 @@ public class Lista_Estudiante {
     public nodo_Estudiante getCrearnod(
             JTextField id,
             JTextField nombre,
-            String sexo,
+            JTextField sexo,
             JTextField edad,
             JTextField nombre_acudiente,
             JTextField t_acudiente
@@ -63,7 +65,7 @@ public class Lista_Estudiante {
             info = new nodo_Estudiante(
                     id.getText(),
                     nombre.getText(),
-                    sexo,
+                    sexo.getText(),
                     Integer.parseInt(edad.getText()),
                     new Acudiente(nombre_acudiente.getText(),t_acudiente.getText()));
             }catch(Exception e){
@@ -90,7 +92,7 @@ public class Lista_Estudiante {
     public void setAddInicio(
             JTextField id,
             JTextField nombre,
-            String sexo,
+            JTextField sexo,
             JTextField edad,
             JTextField nombre_acudiente,
             JTextField t_acudiente 
@@ -117,7 +119,7 @@ public class Lista_Estudiante {
     public void setAgregarfinal(
             JTextField id,
             JTextField nombre,
-            String sexo,
+            JTextField sexo,
             JTextField edad,
             JTextField nombre_acudiente,
             JTextField t_acudiente
@@ -156,7 +158,7 @@ public class Lista_Estudiante {
     public void setAgregar_centro(
             JTextField id,
             JTextField nombre,
-            String sexo,
+            JTextField sexo,
             JTextField edad,
             JTextField nombre_acudiente,
             JTextField t_acudiente,
@@ -192,5 +194,33 @@ public class Lista_Estudiante {
         p.mostrar();
         else
             JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
+    }
+    public void setRegistrarFilaJTable(DefaultTableModel miModelo,
+        int Fila, nodo_Estudiante info){
+        miModelo.setValueAt(info.id, Fila, 0);
+        miModelo.setValueAt(info.nombre, Fila, 1);
+        miModelo.setValueAt(info.sexo, Fila, 2);
+        miModelo.setValueAt(info.edad, Fila, 3);
+        miModelo.setValueAt(info.acudiente.nombre, Fila, 4);
+        miModelo.setValueAt(info.acudiente.telefono, Fila, 5);
+    }
+    
+    public void setLlenarJTable(JTable tab){
+        nodo_Estudiante p=cab;
+        int i=0;
+        DefaultTableModel miModelo=new DefaultTableModel();
+        miModelo.addColumn("ID");
+        miModelo.addColumn("Nombre");
+        miModelo.addColumn("Sexo");
+        miModelo.addColumn("Edad");
+        miModelo.addColumn("Nombre");
+        miModelo.addColumn("Teléfono");
+        while(p!=null){                        
+            miModelo.addRow(new Object[]{"", "", "", "", ""});              
+            setRegistrarFilaJTable(miModelo,i,p);
+            p=p.sig;
+            i++;
+        }
+        tab.setModel(miModelo);
     }
 }
