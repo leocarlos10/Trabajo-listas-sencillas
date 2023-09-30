@@ -252,7 +252,7 @@ public class Lista_Estudiante {
         }
     }
     
-    public void getEstudiante(String id){
+    public void getEstudiante(String id) throws Exception{
          
        nodo_Estudiante p = getBuscarId(id);
        if(p!=null)
@@ -261,13 +261,14 @@ public class Lista_Estudiante {
            JOptionPane.showMessageDialog(null, "El estudiante no ha sido encontrado");
     }
     
-     public void getBuscarInfo_Acudiente(String nombre){
+     public void getBuscarInfo_Acudiente(String nombre) throws Exception{
         
          nodo_Estudiante p = getBuscarNombre(nombre);
          if(p!=null)
              p.acudiente.mostrar();
          else
-           JOptionPane.showMessageDialog(null, "Informacion del acudiente no encontrada");  
+           JOptionPane.showMessageDialog(null, "Informacion del acudiente no encontrada"); 
+        
       
     }
     

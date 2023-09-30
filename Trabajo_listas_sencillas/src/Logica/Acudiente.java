@@ -38,11 +38,7 @@ public class Acudiente {
     
     public void mostrar(){
         
-        String info = """
-                      Informacion del acudiente 
-                      Nombre del acudiente: """+nombre
-                +"\nTelefono del acudiente: "+telefono;
-        
-        JOptionPane.showMessageDialog(null, info);
+        JOptionPane.showMessageDialog(null, "Informacion del Acudiente\n\n"
+                +"Nombre: "+nombre+"\nTelefono: "+telefono);
     }
 }

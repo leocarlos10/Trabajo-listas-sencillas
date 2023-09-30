@@ -152,13 +152,21 @@ public class Jfrm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        String id = JOptionPane.showInputDialog("Ingrese el id del estudiante");
-        estudiante.getEstudiante(id);
+        try {
+            String id = JOptionPane.showInputDialog("Ingrese el id del estudiante");
+            estudiante.getEstudiante(id);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error" + e);
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-       String nombre = JOptionPane.showInputDialog("Ingrese el nombre del estudiante");
-        estudiante.getBuscarInfo_Acudiente(nombre);
+        try {
+            String nombre = JOptionPane.showInputDialog("Ingrese el nombre del estudiante");
+            estudiante.getBuscarInfo_Acudiente(nombre);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error" + e);
+        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
